@@ -70,10 +70,10 @@ const handleclick = (cell, i, j) => {
     console.log(gameBoard);
     console.log("here");
     if ((turn - 1) % 2 === 0) {
-      message.innerHTML = player1 + " won!!!.";
+      message.innerHTML = player1 + " won!!!";
       gameOver = true;
     } else {
-      message.innerHTML = player2 + " won!!!.";
+      message.innerHTML = player2 + " won!!!";
       gameOver = true;
     }
     reset.classList.remove("hide");
