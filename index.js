@@ -15,7 +15,7 @@ for (let i = 3; i <= 10; i++) {
 const startGame = () => {
   let input1 = document.getElementById("p1");
   let input2 = document.getElementById("p2");
-
+  let message = document.getElementById("message");
   let player1 = input1.value;
   let player2 = input2.value;
   dimension = parseInt(d.selectedOptions[0].value);
@@ -37,6 +37,7 @@ const startGame = () => {
   createTable();
   document.getElementById("game-start").setAttribute("disabled", true);
   console.log(gameBoard);
+  message.innerHTML = `${player1}'s turn`;
 };
 
 const handleclick = (cell, i, j) => {
@@ -57,10 +58,12 @@ const handleclick = (cell, i, j) => {
     el.innerHTML = "X";
     gameBoard[i][j] = 1;
     turn++;
+    message.innerHTML = `${player2}'s turn`;
   } else {
     el.innerHTML = "O";
     gameBoard[i][j] = 2;
     turn++;
+    message.innerHTML = `${player1}'s turn`;
   }
 
   if (checkWin()) {
