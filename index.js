@@ -36,6 +36,7 @@ const startGame = () => {
     .map(() => new Array(dimension).fill(""));
   createTable();
   document.getElementById("game-start").setAttribute("disabled", true);
+  console.log(gameBoard);
 };
 
 const handleclick = (cell, i, j) => {
@@ -53,26 +54,26 @@ const handleclick = (cell, i, j) => {
     return;
   }
   if (turn % 2 === 0) {
-    el.innerHTML = "x";
+    el.innerHTML = "X";
     gameBoard[i][j] = 1;
     turn++;
   } else {
-    el.innerHTML = "o";
+    el.innerHTML = "O";
     gameBoard[i][j] = 2;
     turn++;
   }
 
   if (checkWin()) {
+    console.log(gameBoard);
     console.log("here");
     if ((turn - 1) % 2 === 0) {
       message.innerHTML = player1 + " won!!!.";
       gameOver = true;
-      reset.classList.remove("hide");
     } else {
       message.innerHTML = player2 + " won!!!.";
       gameOver = true;
-      reset.classList.remove("hide");
     }
+    reset.classList.remove("hide");
     return;
   } else if (draw()) {
     console.log("herw");
@@ -156,13 +157,13 @@ const createTable = () => {
       cell.className = "cell";
       row.appendChild(cell);
     }
-    row.className = "row";
+    row.className = "row1";
     board.appendChild(row);
   }
 };
 
 const r = (event) => {
-  reset.className = "hide";
+  reset.classList.add("hide");
   let input1 = document.getElementById("p1");
   let input2 = document.getElementById("p2");
   input1.removeAttribute("disabled");
@@ -175,6 +176,8 @@ const r = (event) => {
   input1.value = "";
   input2.value = "";
   document.getElementById("message").innerHTML = "";
+  turn = 0;
+  gameOver = false;
 };
 
 const removeAllChildNodes = (parent) => {
