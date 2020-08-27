@@ -1,9 +1,15 @@
 let turn = 0;
-let gameBoard = new Array(9).fill("1");
-for (var i in gameBoard) {
-  gameBoard[i] = 100 * i;
+let d = document.getElementById("dimension");
+let gameBoard = [];
+for (let i = 3; i <= 10; i++) {
+  let el = document.createElement("option");
+
+  el.value = i;
+  el.id = i;
+  el.textContent = i;
+  d.appendChild(el);
 }
-let gameOver = false;
+
 const startGame = () => {
   let input1 = document.getElementById("p1");
   let input2 = document.getElementById("p2");
@@ -84,12 +90,6 @@ const checkWin = () => {
     return true;
   }
 };
-
-// const reset = (){
-//   for (var i in gameBoard) {
-//     gameBoard[i] = 100 * i;
-//   }
-// }
 
 const isEmpty = (value) => !value || !value.trim();
 
